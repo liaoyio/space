@@ -1,6 +1,7 @@
 {
   "extends": ["eslint:recommended", "next", "next/core-web-vitals", "next/typescript", "prettier"],
   "plugins": ["prettier"],
+  "exclude": ["./src/components/ui/**/*.tsx"],
   "rules": {
     "@typescript-eslint/ban-ts-comment": 1,
     "prettier/prettier": [
