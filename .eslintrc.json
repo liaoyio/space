@@ -1,0 +1,13 @@
+{
+  "extends": ["eslint:recommended", "next", "next/core-web-vitals", "next/typescript", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": 1,
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
