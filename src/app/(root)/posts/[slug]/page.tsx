@@ -47,7 +47,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           <span>阅读时间 {readingTime(JSON.stringify(data.post.body))} 分钟</span>
         </div>
 
-        <h1 className="text-3xl font-semibold text-black dark:text-white">{data.post.title}</h1>
+        <h1 className="text-3xl font-semibold">{data.post.title}</h1>
       </div>
 
       <article className="">

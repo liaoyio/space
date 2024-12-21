@@ -2,7 +2,7 @@ import Link from 'next/link';
 // @ts-ignore
 import client from '~/tina/__generated__/client';
 import ArrowCard from '@/components/post/arrow-card';
-import NavLink from '@/components/toggles/nav-link';
+import { NextLink } from '@/components/toggles/next-link';
 
 const LatestPosts: React.FC = async () => {
   const { data } = await client.queries.postConnection({ last: 3, sort: 'date' });
@@ -11,7 +11,7 @@ const LatestPosts: React.FC = async () => {
     <section className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-black dark:text-white">最近的文章</h3>
-        <NavLink href="/posts">查看所有文章</NavLink>
+        <NextLink href="/posts" className='px-0'>查看所有文章</NextLink>
       </div>
 
       <ul className="flex flex-col gap-4">

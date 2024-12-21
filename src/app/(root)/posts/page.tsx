@@ -37,12 +37,12 @@ export default async function Posts() {
   return (
     <div className="mx-auto max-w-screen-md px-5">
       <div className="space-y-10">
-        <div className="font-semibold text-black dark:text-white">文章</div>
+        <div className="font-semibold">文章</div>
 
         <div className="space-y-4">
           {years.map((year) => (
             <section className="space-y-4" key={year}>
-              <div className="font-semibold text-black dark:text-white">{year}</div>
+              <div className="font-semibold">{year}</div>
 
               <ul className="flex flex-col gap-4">
                 {posts?.[year]?.map((post) => (
