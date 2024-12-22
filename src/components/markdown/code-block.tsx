@@ -1,6 +1,7 @@
 import { Code } from 'bright';
 import type { Extension } from 'bright';
 import { themeIcons } from 'seti-icons';
+import { CopyButton } from '@/components/markdown/copy-button';
 
 const title: Extension = {
   name: 'title',
@@ -114,21 +115,25 @@ export type CodeBlockProps = {
   value: string;
 };
 
+// Built-in themes: https://codehike.org/docs/concepts/code#built-in-themes
 const CodeBlock: React.FC<CodeBlockProps> = (props) => {
   return (
-    <Code
-      className="border dark:border-none"
-      style={{ borderRadius: '0.375rem' }}
-      lang={props.lang}
-      theme={{
-        dark: 'github-dark',
-        light: 'github-light',
-        lightSelector: 'html.light',
-      }}
-      extensions={[title, highlight, fileIcons, focus]}
-    >
-      {props.value}
-    </Code>
+    <div className="relative">
+      <Code
+        className="relative border dark:border-none"
+        style={{ borderRadius: '0.375rem' }}
+        lang={props.lang}
+        theme={{
+          dark: 'one-dark-pro',
+          light: 'github-light',
+          lightSelector: 'html.light',
+        }}
+        extensions={[title, highlight, fileIcons, focus]}
+      >
+        {props.value}
+      </Code>
+      <CopyButton className="absolute right-4 top-2 rounded" value={props.value} />
+    </div>
   );
 };
 

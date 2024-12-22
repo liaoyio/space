@@ -1,6 +1,5 @@
 import React from 'react';
-import { Phone, ChartNoAxesColumnDecreasing, Timer } from 'lucide-react'
-
+import { Phone, ChartNoAxesColumnDecreasing, Timer } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const StickerCard = ({
@@ -60,13 +59,9 @@ const StickerCard = ({
           <div className="relative flex items-center gap-2">
             <div className="absolute -left-4 h-5 w-1 rounded-r-sm bg-blue-500" />
             <Icon className="h-5 w-5 shrink-0 text-blue-500" />
-            <h3 className="font-medium text-gray-900 dark:text-gray-50">
-              {title}
-            </h3>
+            <h3 className="font-medium text-gray-900 dark:text-gray-50">{title}</h3>
           </div>
-          <p className="mt-2 text-gray-600 dark:text-gray-400 sm:text-sm">
-            {children}
-          </p>
+          <p className="mt-2 text-gray-600 dark:text-gray-400 sm:text-sm">{children}</p>
         </div>
       </a>
     </div>
@@ -78,18 +73,16 @@ export default function Example() {
     <>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <StickerCard icon={Phone} title="Call Analytics">
-          Real-time voice analytics and sentiment tracking to improve customer
-          interactions.
+          Real-time voice analytics and sentiment tracking to improve customer interactions.
         </StickerCard>
 
         <StickerCard icon={ChartNoAxesColumnDecreasing} title="Performance Metrics">
-          Comprehensive reporting on KPIs including call resolution rates and
-          response times.
+          Comprehensive reporting on KPIs including call resolution rates and response times.
         </StickerCard>
 
         <StickerCard icon={Timer} title="Queue Management">
-          Smart call routing and queue optimization to minimize wait times and
-          maximize agent efficiency.
+          Smart call routing and queue optimization to minimize wait times and maximize agent
+          efficiency.
         </StickerCard>
       </div>
     </>

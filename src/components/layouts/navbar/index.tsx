@@ -46,7 +46,7 @@ export const Navbar = () => {
     <header
       className={cn(
         'sticky top-0 z-10 flex w-full justify-center border-x-0 backdrop-blur transition-all',
-        throttledPreviousScrollTop > 60 && 'bg-background/50 border-border/50 border-b',
+        throttledPreviousScrollTop > 60 && 'border-b border-border/50 bg-background/50',
         {
           '-translate-y-20': throttledPreviousScrollTop > 300 ? throttledIsHideHeader : false,
         },
@@ -55,20 +55,18 @@ export const Navbar = () => {
       <div className="flex h-16 w-full items-center p-4 sm:p-8 md:max-w-screen-md 2xl:max-w-screen-xl">
         <NextLink href="/" className={cn('mr-4 hidden sm:flex')} aria-label="Liaoyi">
           {/* <Logo /> */}
-          <span className="text-primary ml-2 text-base font-semibold">Liaoyi</span>
+          <span className="ml-2 text-base font-semibold text-primary">Liaoyi</span>
         </NextLink>
         <div className="mr-8 hidden h-16 flex-1 items-center justify-end text-base font-medium sm:flex">
-
-          {/* active={} */}
           {navItems.map((el) => (
             <Link
               href={el.link}
               key={el.link}
               className={cn(
-                'text-muted-foreground px-4 py-2 text-sm font-normal transition-colors',
-                'hover:text-primary hover:font-semibold',
+                'px-4 py-2 text-sm font-normal text-muted-foreground transition-colors',
+                'hover:font-semibold hover:text-primary',
                 /* link active */
-                /^\/posts(?:\/.*)?$/.test(pathname) && 'text-primary font-semibold',
+                pathname === el.link && 'font-semibold text-primary',
               )}
             >
               {el.label}

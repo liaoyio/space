@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 // @ts-ignore
 import client from '~/tina/__generated__/client';
 // @ts-ignore
 import type { PostConnectionQuery } from '~/tina/__generated__/types';
-import ArrowCard from '@/components/post/arrow-card';
 import { PostItem } from '@/components/post/post-item';
 
 export const revalidate = 3600; // invalidate every hour
@@ -38,9 +36,7 @@ export default async function Posts() {
   if (!years.length || posts?.length) {
     return (
       <div className="grid place-content-center gap-8">
-        <h3 className="text-center text-2xl font-semibold tracking-tight">
-          暂无文章
-        </h3>
+        <h3 className="text-center text-2xl font-semibold tracking-tight">暂无文章</h3>
       </div>
     );
   }
@@ -54,7 +50,7 @@ export default async function Posts() {
           {years.map((year) => (
             <section className="space-y-4" key={year}>
               <div className="font-semibold">{year}</div>
-              <ul className="flex flex-col gap-6 ">
+              <ul className="flex flex-col gap-6">
                 {posts?.[year]?.map((post, idx) => (
                   <li
                     key={post?.node?.id}

@@ -2,6 +2,7 @@
 import { format } from 'date-fns';
 import client from '~/tina/__generated__/client';
 import Markdown from '@/components/markdown/markdown';
+import { TagList } from '@/components/post/tags';
 import BackTo from '@/components/toggles/back-to';
 import { readingTime } from '@/lib/utils';
 
@@ -48,9 +49,12 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         </div>
 
         <h1 className="text-3xl font-semibold">{data.post.title}</h1>
+        <div className="text-neutral-500">
+          <TagList tags={data.post.tags} />
+        </div>
       </div>
 
-      <article className="">
+      <article className="custom-post-container" id="post">
         <Markdown content={data.post.body} />
       </article>
     </div>

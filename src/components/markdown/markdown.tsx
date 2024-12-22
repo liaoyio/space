@@ -3,6 +3,7 @@ import GitHubGistEmbed from '@/components/embed//github-gist';
 import CodeSandboxEmbed from '@/components/embed/code-sandbox';
 import StackBlitzEmbed from '@/components/embed/stack-blitz';
 import CodeBlock from './code-block';
+import { CustomComponents } from './custom-components';
 import Heading from './heading';
 
 export type TinaMarkdownProps = React.ComponentProps<typeof TinaMarkdown>;
@@ -14,12 +15,7 @@ const components = {
   Heading,
   StackBlitzEmbed,
   code_block: CodeBlock,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  a: ({ url, children }: any) => (
-    <a href={url} target={url.startsWith('#') ? '_self' : '_blank'}>
-      {children}
-    </a>
-  ),
+  ...CustomComponents,
 } as TinaMarkdownProps['components'];
 
 const Markdown: React.FC<MarkdownProps> = ({ ...props }) => {

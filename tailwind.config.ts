@@ -12,9 +12,22 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      sm: '640px', // => @media (min-width: 640px) { ... }
+      md: '768px', // => @media (min-width: 768px) { ... }
+      lg: '1024px', // => @media (min-width: 1024px) { ... }
+      wrapper: '1200px', // 基础版心
+      xl: '1280px', // => @media (min-width: 1280px) { ... }
+      '2xl': '1440px', // => @media (min-width: 1440px) { ... }
+    },
+    debugScreens: {
+      position: ['bottom', 'right'],
+      ignore: ['dark'],
+    },
     extend: {
       fontFamily: {
         sans: ['Geist', ...fontFamily.sans],
+        mono: ['GeistMono', ...fontFamily.mono],
       },
       colors: {
         border: 'hsl(var(--border))',
