@@ -1,3 +1,10 @@
+import { createMetadata } from "@/lib/metadata";
+
+export const metadata = createMetadata({
+  canonical: '/about',
+});
+
+
 export default function About() {
   return (
     <div className="mx-auto max-w-screen-md px-5">

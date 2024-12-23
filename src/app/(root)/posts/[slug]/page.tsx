@@ -5,31 +5,12 @@ import Markdown from '@/components/markdown/markdown';
 import { TagList } from '@/components/post/tags';
 import BackTo from '@/components/toggles/back-to';
 import { readingTime } from '@/lib/utils';
+import { baseUrl } from '@/lib/metadata';
 
 export const revalidate = 3600; // invalidate every hour
 
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const { data } = await client.queries.post({ relativePath: `${slug}.mdx` });
-
-  return {
-    title: data.post.title,
-  };
-}
-
-export async function generateStaticParams() {
-  const { data } = await client.queries.postConnection();
-
-  if (!data.postConnection.edges) {
-    return [];
-  }
-  // @ts-ignore
-  return data.postConnection.edges.map((post) => ({
-    slug: post?.node?._sys.breadcrumbs.join('/'),
-  }));
-}
 
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -59,4 +40,38 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
       </article>
     </div>
   );
+}
+
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const { data } = await client.queries.post({ relativePath: `${slug}.mdx` });
+  const { title } = data.post
+  const description = "Liaoyi's digital garden"
+  return {
+    title,
+    description,
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: `${baseUrl}api/og/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+export async function generateStaticParams() {
+  const { data } = await client.queries.postConnection();
+
+  if (!data.postConnection.edges) {
+    return [];
+  }
+  // @ts-ignore
+  return data.postConnection.edges.map((post) => ({
+    slug: post?.node?._sys.breadcrumbs.join('/'),
+  }));
 }

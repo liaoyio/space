@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import NextThemeProviders from '@/components/providers/next-theme';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { createMetadata } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 
@@ -16,15 +16,10 @@ const geistSansMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
+export const metadata = createMetadata({
   icons: 'https://api.iconify.design/fluent-emoji:potted-plant.svg',
-  title: {
-    template: '%s - Liaoyi',
-    default: 'Liaoyi 的数字花园',
-  },
-  description: "Liaoyi's digital garden",
-  authors: [{ name: 'Liaoyi' }],
-};
+  canonical: '/',
+});
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (

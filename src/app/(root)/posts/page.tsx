@@ -1,15 +1,17 @@
-import type { Metadata } from 'next';
 // @ts-ignore
 import client from '~/tina/__generated__/client';
 // @ts-ignore
 import type { PostConnectionQuery } from '~/tina/__generated__/types';
 import { PostItem } from '@/components/post/post-item';
+import { createMetadata } from '@/lib/metadata';
 
 export const revalidate = 3600; // invalidate every hour
 
-export const metadata: Metadata = {
+
+export const metadata = createMetadata({
+  canonical: '/about',
   title: '文章',
-};
+});
 
 export default async function Posts() {
   const { data } = await client.queries.postConnection({
