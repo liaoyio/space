@@ -15,6 +15,11 @@ article {
   @apply prose-headings:text-black prose-headings:dark:text-white;
 }
 
+
+article :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-family:  GeistMono, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 @layer utilities {
   article a {
     @apply font-sans text-current underline underline-offset-2;
