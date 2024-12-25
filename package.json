@@ -34,6 +34,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
+    "decimal.js": "^10.4.3",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^9.1.0",
