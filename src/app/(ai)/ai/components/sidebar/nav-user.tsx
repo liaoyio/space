@@ -1,6 +1,8 @@
 'use client';
+
 import Link from 'next/link';
 import { LogOut } from 'lucide-react';
+import { AccountIcon, MoreHorizontal, PlansIcon } from '@/app/(ai)/ai/components/icons';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,13 +16,11 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 
-import { AccountIcon, MoreHorizontal, PlansIcon } from '@/app/(ai)/ai/components/icons';
-
 export function NavUser() {
   const { isMobile } = useSidebar();
 
   return (
-    <SidebarMenu className='mb-3'>
+    <SidebarMenu className="mb-3">
       <SidebarMenuItem>
         <SidebarMenuButton
           asChild
@@ -33,8 +33,8 @@ export function NavUser() {
         </SidebarMenuButton>
       </SidebarMenuItem>
 
-      <div className="flex justify-between items-center gap-2">
-        <SidebarMenuItem className='flex-1'>
+      <div className="flex items-center justify-between gap-2">
+        <SidebarMenuItem className="flex-1">
           <SidebarMenuButton
             asChild
             className="flex h-9 rounded-sm group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!pl-2.5 [&>svg]:size-5 [&>svg]:shrink-0"
@@ -47,8 +47,8 @@ export function NavUser() {
         </SidebarMenuItem>
 
         <DropdownMenu>
-          <DropdownMenuTrigger asChild className='group-data-[collapsible=icon]:hidden'>
-            <div className='flex h-full p-2 aspect-square  items-center justify-center rounded-md text-sidebar-foreground  transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-5 [&>svg]:shrink-0' >
+          <DropdownMenuTrigger asChild className="group-data-[collapsible=icon]:hidden">
+            <div className="flex aspect-square h-full items-center justify-center rounded-md p-2 text-sidebar-foreground transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-5 [&>svg]:shrink-0">
               <MoreHorizontal />
               <span className="sr-only">More</span>
             </div>
@@ -60,7 +60,7 @@ export function NavUser() {
             sideOffset={4}
           >
             <DropdownMenuItem>
-              <LogOut />
+              <LogOut className="text-red-500" />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

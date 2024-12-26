@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { ChevronsUpDown } from 'lucide-react';
 import {
@@ -39,8 +40,8 @@ export function TeamSwitcher() {
         </div>
       </SidebarMenu>
 
-      <SidebarMenu className='hidden group-data-[collapsible=icon]:block size-10'>
-        <SidebarTrigger className="flex  items-center justify-center size-10 [&>svg]:!size-6 [&>svg]:rotate-180 [&>svg]:opacity-90" />
+      <SidebarMenu className="hidden size-10 group-data-[collapsible=icon]:block">
+        <SidebarTrigger className="flex size-10 items-center justify-center [&>svg]:!size-6 [&>svg]:rotate-180 [&>svg]:opacity-90" />
       </SidebarMenu>
 
       <SidebarMenu>
@@ -49,7 +50,7 @@ export function TeamSwitcher() {
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton
                 size="lg"
-                className="flex items-center hover:bg-transparent group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!pl-1"
+                className="flex items-center group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!pl-1 group-data-[collapsible=icon]:hover:bg-transparent"
               >
                 <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-green-500">
                   P

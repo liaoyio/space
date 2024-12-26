@@ -38,6 +38,16 @@ export default {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
+        /* AI */
+        gray: {
+          50: 'rgb(247 247 247)',
+          200: 'rgb(229 229 229)',
+          400: 'rgb(163 163 163)',
+          700: 'rgb(66 66 66 )',
+          800: 'rgb(41 41 41 )',
+          900: 'rgb(20 20 20)',
+          950: 'rgb(15 15 15)',
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',

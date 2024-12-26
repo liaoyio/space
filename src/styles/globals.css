@@ -136,3 +136,11 @@ article :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) 
     @apply bg-background text-foreground antialiased;
   }
 }
+
+
+.dark {
+  [data-sidebar="sidebar"] {
+    background-color: rgba(15 15 15 /1);
+  }
+}
+

@@ -4,7 +4,7 @@ import { UpgradeIcon } from '../icons';
 
 export default function TopBanner() {
   return (
-    <div className="flex rounded-t-lg items-center justify-center gap-2 border-b border-yellow-200 bg-yellow-50 p-2 dark:border-yellow-900/50 dark:bg-yellow-950/50">
+    <div className="flex items-center justify-center gap-2 rounded-t-lg border-b border-yellow-200 bg-yellow-50 p-2 dark:border-yellow-900/50 dark:bg-yellow-950/50">
       <p className="text-xs font-normal text-yellow-900 dark:text-yellow-400 sm:text-sm">
         You are on the free plan and have
         <span className="hidden sm:inline">

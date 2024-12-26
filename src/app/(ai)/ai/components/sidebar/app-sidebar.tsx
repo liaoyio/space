@@ -8,17 +8,15 @@ import {
   SidebarHeader,
   SidebarMenu,
 } from '@/components/ui/sidebar';
-
+import { menu_list, sub_menu_list } from '../../components/_data';
+import { SiderPlanCard } from '../../components/wrapper';
 import { MenuList, SubMenuList } from './nav-list';
 import { NavUser } from './nav-user';
 import { TeamSwitcher } from './workspace-switcher';
-import { SiderPlanCard } from '../../components/wrapper';
-import { menu_list, sub_menu_list } from '../../components/_data';
-
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="min-w-[56px] border-none">
+    <Sidebar collapsible="icon" {...props} className="min-w-[56px] border-none" id="yi-sider">
       <SidebarHeader>
         <TeamSwitcher />
       </SidebarHeader>
