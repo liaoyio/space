@@ -1,4 +1,3 @@
-
 import type { SVGProps } from 'react';
 
 export const Juejin = (props: SVGProps<SVGSVGElement>) => {

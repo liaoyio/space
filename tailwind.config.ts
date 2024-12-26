@@ -2,7 +2,6 @@ import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 import animated from 'tailwindcss-animated';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
   darkMode: ['class'],
@@ -26,8 +25,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Geist', ...fontFamily.sans],
-        mono: ['GeistMono', ...fontFamily.mono],
+        sans: ['Geist', 'var(--font-geist-sans)'],
+        mono: ['GeistMono', 'var(--font-geist-mono)'],
       },
       colors: {
         border: 'hsl(var(--border))',
