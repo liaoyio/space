@@ -11,9 +11,5 @@ export function readingTime(text: string) {
 
 export const isBrowser = () => {
   // 代码来自：https://ahooks.js.org/zh-CN/guide/blog/ssr
-  return !!(
-    typeof window !== "undefined" &&
-    window.document &&
-    window.document.createElement
-  );
+  return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 };

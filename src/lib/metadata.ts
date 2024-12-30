@@ -43,7 +43,7 @@ export function createMetadata({
       card: 'summary_large_image',
       ...twitter,
     },
-    ...props
+    ...props,
   };
 }
 

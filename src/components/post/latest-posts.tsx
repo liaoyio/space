@@ -11,7 +11,9 @@ const LatestPosts: React.FC = async () => {
     <section className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-black dark:text-white">最近的文章</h3>
-        <NextLink href="/posts" className='px-0'>查看所有文章</NextLink>
+        <NextLink href="/posts" className="px-0">
+          查看所有文章
+        </NextLink>
       </div>
 
       <ul className="flex flex-col gap-4">

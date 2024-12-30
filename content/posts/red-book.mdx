@@ -6,12 +6,9 @@ draft: false
 tags: ['Next.js']
 ---
 
-
 在Next.js 15中引入了 [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes) 特性，拦截路由允许你在当前路由拦截其他路由地址并在当前路由中展示内容，这使得开发者能够创建更加丰富的用户界面和体验。
 
-
 在小红书网页版中，用户可以浏览内容流，并在点击某项内容时查看详细内容，而不必离开当前页面。如下图所示：
-
 
 ![](/images/xiaohongshu.gif)
 
@@ -21,15 +18,11 @@ tags: ['Next.js']
 
 而当你的朋友打开时，将不再以 Modal 的形式展现，而是直接展示这篇文章全屏页面。
 
-
-
 了解了拦截路由的效果，让我们再思考下使用拦截路由的意义是什么。
 
 简单的来说，就是希望用户继续停留在重要的页面上。比如上述例子中的图片流页面，开发者肯定是希望用户能够持续在图片流页面浏览，如果点击一张图片就跳转出去，会打断用户的浏览体验，如果点击只展示一个 Modal，分享操作又会变得麻烦一点。拦截路由正好可以实现这样一种平衡。又比如任务列表页面，点击其中一项任务，弹出 Modal 让你能够编辑此任务，同时又可以方便的分享任务内容。
 
-
 ### 1. 拦截路由实现方式
-
 
 拦截路由可以使用 `(..)` 约定来定义，这与相对路径约定 `../` 类似：
 
@@ -39,7 +32,6 @@ tags: ['Next.js']
 - `(...)` 表示匹配`root`根目录
 
 但是要注意的是，这个匹配的是路由的层级而不是文件夹路径的层级，就比如路由组、平行路由这些不会影响 URL 的文件夹就不会被计算层级。
-
 
 例如，您可以通过创建一个 `(..)photo` 目录来截取 `feed` 节段中的 `photo` 节段。如下图：
 
@@ -69,7 +61,6 @@ app/
 
 在 `@modal/(.)photos/[id]/modal.tsx` 中，我们创建一个 `Modal` 组件，用于显示模态窗口：
 
-
 ```tsx
 // title @modal/(.)photos/[id]/modal.tsx
 'use client';
@@ -77,6 +68,8 @@ app/
 import { type ElementRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
+
+// title @modal/(.)photos/[id]/modal.tsx
 
 export function Modal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -117,17 +110,14 @@ export function Modal({ children }: { children: React.ReactNode }) {
 
 ```tsx
 // title @modal/(.)photos/[id]/page.tsx
-import { Modal } from "./modal";
+import { Modal } from './modal';
 
-export default async function PhotoModal({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function PhotoModal({ params }: { params: Promise<{ id: string }> }) {
   const photoId = (await params).id;
   return <Modal>{photoId}</Modal>;
 }
 ```
+
 ### 5. 详情页面
 
 在 `@modal/photos/[id]/page.tsx` 中，我们创建一个页面，用于直接通过 URL 访问照片详情：
@@ -178,10 +168,8 @@ export default function Page() {
 }
 ```
 
-
 ### 7. 补充
 
-Next.js 官方文档提供了关于 [Intercepting Routes](https://link.juejin.cn?target=https%3A%2F%2Fnextjs.org%2Fdocs%2Fapp%2Fbuilding-your-application%2Frouting%2Fintercepting-routes "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes") 的详细信息，这允许我们在当前布局中加载应用程序其他部分的路由。这种路由模式在想要在不切换用户上下文的情况下显示路由内容时非常有用。例如，点击内容流中的照片时，可以在模态窗口中显示照片，而不需要跳转到新页面。
-
+Next.js 官方文档提供了关于 [Intercepting Routes](https://link.juejin.cn?target=https%3A%2F%2Fnextjs.org%2Fdocs%2Fapp%2Fbuilding-your-application%2Frouting%2Fintercepting-routes 'https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes') 的详细信息，这允许我们在当前布局中加载应用程序其他部分的路由。这种路由模式在想要在不切换用户上下文的情况下显示路由内容时非常有用。例如，点击内容流中的照片时，可以在模态窗口中显示照片，而不需要跳转到新页面。
 
 [点击查看示例🍓](/demo/intercepting-routes)

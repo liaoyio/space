@@ -1,6 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cva, VariantProps } from 'class-variance-authority';
+import { MenuItem } from '@/app/(ai)/ai/components/_data';
 import {
   SidebarGroup,
   SidebarMenu,
@@ -8,14 +11,26 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 
+const SidebarMenuButtonVariants = cva(
+  'flex h-10 rounded-sm group-data-[collapsible=icon]:!size-10 [&>svg]:shrink-0',
+  {
+    variants: {
+      size: {
+        default: '[&>svg]:size-6',
+        sm: 'group-data-[collapsible=icon]:!pl-2.5 [&>svg]:size-5',
+      },
+    },
+    defaultVariants: { size: 'default' },
+  },
+);
+
 type Props = {
-  list: {
-    title: string;
-    icon: (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
-  }[];
+  size?: VariantProps<typeof SidebarMenuButtonVariants>['size'];
+  list: MenuItem[];
 };
 
-export function MenuList({ list }: Props) {
+export function NavList({ list, size }: Props) {
+  const pathname = usePathname();
   return (
     <SidebarGroup>
       <SidebarMenu>
@@ -23,33 +38,14 @@ export function MenuList({ list }: Props) {
           <SidebarMenuItem key={item.title} className="mb-1">
             <SidebarMenuButton
               asChild
-              className="flex h-10 rounded-sm group-data-[collapsible=icon]:!size-10 [&>svg]:size-6 [&>svg]:shrink-0"
+              className={SidebarMenuButtonVariants({ size })}
+              isActive={pathname === item.href}
             >
-              <Link href={`/${item.title.toLocaleLowerCase()}`}>
+              <Link href={item.href}>
                 <item.icon />
-                <span className="text-base">{item.title}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
-      </SidebarMenu>
-    </SidebarGroup>
-  );
-}
-
-export function SubMenuList({ list }: Props) {
-  return (
-    <SidebarGroup>
-      <SidebarMenu>
-        {list.map((item) => (
-          <SidebarMenuItem key={item.title} className="mb-1">
-            <SidebarMenuButton
-              asChild
-              className="flex h-10 rounded-sm group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!pl-2.5 [&>svg]:size-5 [&>svg]:shrink-0"
-            >
-              <Link href={`/${item.title.toLocaleLowerCase()}`}>
-                <item.icon />
-                <span className="text-sm">{item.title}</span>
+                <span className={size === 'default' || !size ? 'text-base' : 'text-sm'}>
+                  {item.title}
+                </span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

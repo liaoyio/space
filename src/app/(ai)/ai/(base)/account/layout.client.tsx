@@ -6,10 +6,8 @@ import { Tabs as MyTabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export function Tabs() {
   const pathname = usePathname();
-
-  // '/ai/account/team-details' -> ['', 'account', 'team-details']
   const val = pathname.split('/')[3];
-  console.log('pathname', pathname, pathname.split('/'), val);
+  // console.log('pathname', pathname, pathname.split('/'), val);
   return (
     <MyTabs value={val} defaultValue="general" className="w-full bg-transparent">
       <div className="flex items-center justify-between pb-3">

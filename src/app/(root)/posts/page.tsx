@@ -7,7 +7,6 @@ import { createMetadata } from '@/lib/metadata';
 
 export const revalidate = 3600; // invalidate every hour
 
-
 export const metadata = createMetadata({
   canonical: '/about',
   title: '文章',

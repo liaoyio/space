@@ -4,13 +4,12 @@ import client from '~/tina/__generated__/client';
 import Markdown from '@/components/markdown/markdown';
 import { TagList } from '@/components/post/tags';
 import BackTo from '@/components/toggles/back-to';
-import { readingTime } from '@/lib/utils';
 import { baseUrl } from '@/lib/metadata';
+import { readingTime } from '@/lib/utils';
 
 export const revalidate = 3600; // invalidate every hour
 
 export const dynamicParams = true;
-
 
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -42,23 +41,22 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   );
 }
 
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { data } = await client.queries.post({ relativePath: `${slug}.mdx` });
-  const { title } = data.post
-  const description = "Liaoyi's digital garden"
+  const { title } = data.post;
+  const description = "Liaoyi's digital garden";
   return {
     title,
     description,
     openGraph: {
-      type: "article",
+      type: 'article',
       title,
       description,
       url: `${baseUrl}api/og/${slug}`,
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
     },

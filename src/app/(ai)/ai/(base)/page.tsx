@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/separator';
-import { startedList, popularTools } from './components/_data';
-import TopBanner from './components/sidebar/banner';
-import { Title, Getstarted, PinnedTools, PopularTools } from './components/wrapper';
+import { startedList, popularTools } from '../components/_data';
+import TopBanner from '../components/sidebar/banner';
+import { Title, Getstarted, PinnedTools, PopularTools } from '../components/wrapper';
 
 export default function Page() {
   return (

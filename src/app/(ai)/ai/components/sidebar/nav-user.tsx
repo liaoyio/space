@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { LogOut } from 'lucide-react';
 import { AccountIcon, MoreHorizontal, PlansIcon } from '@/app/(ai)/ai/components/icons';
 import {
@@ -18,6 +19,7 @@ import {
 
 export function NavUser() {
   const { isMobile } = useSidebar();
+  const pathname = usePathname();
 
   return (
     <SidebarMenu className="mb-3">
@@ -25,8 +27,9 @@ export function NavUser() {
         <SidebarMenuButton
           asChild
           className="flex h-10 rounded-sm group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!pl-2.5 [&>svg]:size-5 [&>svg]:shrink-0"
+          isActive={pathname === '/ai/plans-billing'}
         >
-          <Link href="/plans-billing">
+          <Link href="/ai/plans-billing">
             <PlansIcon />
             <span className="text-sm">Plans & Billing</span>
           </Link>
@@ -38,8 +41,9 @@ export function NavUser() {
           <SidebarMenuButton
             asChild
             className="flex h-9 rounded-sm group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!pl-2.5 [&>svg]:size-5 [&>svg]:shrink-0"
+            isActive={pathname === '/ai/account/general'}
           >
-            <Link href="/account/general">
+            <Link href="/ai/account/general">
               <AccountIcon />
               <span className="text-sm">Account</span>
             </Link>

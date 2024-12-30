@@ -229,13 +229,17 @@ export const SuccessIcon = (props: SVGProps<SVGSVGElement>) => {
   );
 };
 
-
 export const MoreHorizontal = (props: SVGProps<SVGSVGElement>) => {
   return (
-    <svg {...props} viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M8.743 10c0-.69.56-1.25 1.25-1.25h.008a1.25 1.25 0 0 1 0 2.5h-.008c-.69 0-1.25-.56-1.25-1.25ZM13.743 10c0-.69.56-1.25 1.25-1.25h.008a1.25 1.25 0 0 1 0 2.5h-.008c-.69 0-1.25-.56-1.25-1.25ZM3.75 10c0-.69.56-1.25 1.25-1.25h.007a1.25 1.25 0 0 1 0 2.5H5c-.69 0-1.25-.56-1.25-1.25Z"></path></svg>
+    <svg {...props} viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.743 10c0-.69.56-1.25 1.25-1.25h.008a1.25 1.25 0 0 1 0 2.5h-.008c-.69 0-1.25-.56-1.25-1.25ZM13.743 10c0-.69.56-1.25 1.25-1.25h.008a1.25 1.25 0 0 1 0 2.5h-.008c-.69 0-1.25-.56-1.25-1.25ZM3.75 10c0-.69.56-1.25 1.25-1.25h.007a1.25 1.25 0 0 1 0 2.5H5c-.69 0-1.25-.56-1.25-1.25Z"
+      ></path>
+    </svg>
   );
 };
-
 
 export const ChevronsUpDown = (props: SVGProps<SVGSVGElement>) => {
   return (
