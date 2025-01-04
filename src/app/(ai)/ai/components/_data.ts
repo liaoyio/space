@@ -71,7 +71,7 @@ export type ToolCard = {
 export const popularTools: ToolCard[] = [
   {
     url: '/ai/code-converter?inputLang=Python&outputLang=JavaScript',
-    imageUrl: ['/lang-logos/python.svg', '/lang-logos/javascript.svg'],
+    imageUrl: ['/lang-logos/python.svg', '/lang-logos/js.svg'],
     title: 'Python to JavaScript',
     description: 'Used by 10,000+ users',
   },
