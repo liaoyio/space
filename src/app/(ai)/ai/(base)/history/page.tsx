@@ -1,15 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
-import { RotateCw, Paintbrush } from 'lucide-react';
-import { UpgradeIcon, UploadIcon, WarningIcon } from '@/app/(ai)/ai/components/icons';
+import { Paintbrush } from 'lucide-react';
 import { Title } from '@/app/(ai)/ai/components/wrapper';
-import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -22,7 +17,7 @@ const list = [...Array.from({ length: 0 })].map((_, i) => ({
   status: 'error',
 }));
 
-export function FilesTableList() {
+function FilesTableList() {
   return (
     <Table className="min-w-full rounded-lg">
       <TableHeader className="overflow-hidden bg-gray-50 dark:bg-gray-800 [&_tr]:border-0">
@@ -57,8 +52,8 @@ export default function FilesPage() {
       <div>
         <div className="flex items-center justify-between gap-6 pt-2">
           <div className="rounded-sm border border-green-200 bg-green-50 px-4 py-2 text-sm text-green-900 dark:border-green-950/60 dark:bg-green-950/50 dark:text-green-400">
-            The history is stored on your device (your browser's local storage). We do not store
-            your input or output code.
+            The history is stored on your device (your browser&apos;s local storage). We do not
+            store your input or output code.
           </div>
 
           <div className="flex justify-end gap-4">

@@ -18,6 +18,5 @@ export async function createToDo(formData: FormData) {
 export async function createToDoDirectly(value: string) {
   const form = new FormData();
   form.append('todo', value);
-  console.log(form);
   return createToDo(form);
 }

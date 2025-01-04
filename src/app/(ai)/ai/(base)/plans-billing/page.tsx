@@ -4,6 +4,16 @@ import { UpgradeIcon } from '@/app/(ai)/ai/components/icons';
 import { Title } from '@/app/(ai)/ai/components/wrapper';
 import { Button } from '@/components/ui/button';
 
+const SkeletonItem = () => {
+  return (
+    <div className="shadow-xs relative space-y-4 rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
+      <div className="h-6 w-full animate-pulse rounded-md bg-gray-200 dark:bg-gray-600"></div>
+      <div className="h-6 w-3/4 animate-pulse rounded-md bg-gray-200 dark:bg-gray-600"></div>
+      <div className="h-6 w-1/4 animate-pulse rounded-md bg-gray-200 dark:bg-gray-600"></div>
+    </div>
+  );
+};
+
 export default function PlansBillingPage() {
   return (
     <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-6">
@@ -49,13 +59,3 @@ export default function PlansBillingPage() {
     </div>
   );
 }
-
-export const SkeletonItem = () => {
-  return (
-    <div className="shadow-xs relative space-y-4 rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
-      <div className="h-6 w-full animate-pulse rounded-md bg-gray-200 dark:bg-gray-600"></div>
-      <div className="h-6 w-3/4 animate-pulse rounded-md bg-gray-200 dark:bg-gray-600"></div>
-      <div className="h-6 w-1/4 animate-pulse rounded-md bg-gray-200 dark:bg-gray-600"></div>
-    </div>
-  );
-};

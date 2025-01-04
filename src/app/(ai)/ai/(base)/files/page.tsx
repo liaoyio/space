@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { RotateCw } from 'lucide-react';
-import { UpgradeIcon, UploadIcon, WarningIcon } from '@/app/(ai)/ai/components/icons';
-import { Title } from '@/app/(ai)/ai/components/wrapper';
 import { Button } from '@/components/ui/button';
 import {
   Table,
@@ -12,6 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { UpgradeIcon, UploadIcon, WarningIcon } from '../../components/icons';
+import { Title } from '../../components/wrapper';
 
 const list = [...Array.from({ length: 0 })].map((_, i) => ({
   id: i + 1,
@@ -20,7 +20,7 @@ const list = [...Array.from({ length: 0 })].map((_, i) => ({
   status: 'error',
 }));
 
-export function FilesTableList() {
+function HistoryTableList() {
   return (
     <Table className="min-w-full rounded-lg">
       <TableHeader className="overflow-hidden bg-gray-50 dark:bg-gray-800 [&_tr]:border-0">
@@ -86,7 +86,7 @@ export default function FilesPage() {
 
       <div className="flow-root">
         <div className="inline-block min-w-full px-6 py-2 align-middle lg:px-0">
-          <FilesTableList />
+          <HistoryTableList />
         </div>
       </div>
     </div>

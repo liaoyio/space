@@ -15,8 +15,6 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   const { slug } = await params;
   const { data } = await client.queries.post({ relativePath: `${slug}.mdx` });
 
-  console.log(data);
-
   return (
     <div className="mx-auto max-w-screen-md px-5">
       <BackTo href="/posts">返回文章</BackTo>

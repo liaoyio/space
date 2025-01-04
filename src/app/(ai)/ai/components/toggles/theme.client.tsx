@@ -7,7 +7,6 @@ import { ModeItem } from './theme';
 
 export const ModeItemCard = ({ title, description, htmlFor }: ModeItem) => {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   return (
     <label htmlFor={htmlFor}>
