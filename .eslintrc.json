@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["/tina/**/*", "./src/components/ui/**/*.tsx", "/public/*", "/node_modules"],
+  "ignorePatterns": ["./src/components/ui/**/*.tsx", "/public/*", "/node_modules"],
   "extends": ["eslint:recommended", "next", "next/core-web-vitals", "next/typescript", "prettier"],
   "plugins": ["prettier"],
   "rules": {
