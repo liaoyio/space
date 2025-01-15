@@ -7,43 +7,34 @@ export type MetadataProps = Metadata & {
   ogImage?: string;
 };
 
-export function createMetadata({
-  title,
-  description = "Liaoyi's digital garden",
-  canonical = '/',
-  ogImage = '/og-image.svg',
-  twitter,
-  ...props
-}: MetadataProps): Metadata {
+export function createMetadata(override?: Metadata): Metadata {
   return {
-    // metadataBase: new URL('https://liaoyi.space'),
+    ...override,
     title: {
       template: '%s - Liaoyi',
       default: 'Liaoyi 的数字花园',
     },
-    description,
-    keywords: ['code snippet', 'blog', 'Next.js', 'React19'],
-    alternates: {
-      canonical,
-    },
+    description: override?.description ?? `Liaoyi 的数字花园`,
     authors: [{ name: 'LiaoYi', url: 'https://github.com/liaoyio' }],
+    metadataBase: baseUrl,
+    // alternates: { canonical: '', },
     openGraph: {
-      title: title,
-      description,
-      type: 'website',
-      url: canonical,
-      images: [{ url: ogImage, width: 1200, height: 720, alt: 'OG Image' }],
+      title: override?.title ?? undefined,
+      description: override?.description ?? `Liaoyi's digital garden`,
+      url: 'https://liaoyi.space',
+      images: '/og-image.svg',
+      siteName: 'Fumadocs',
+      ...override?.openGraph,
     },
     twitter: {
-      title,
-      description,
+      card: 'summary_large_image',
       creator: '@liaoyi',
       site: 'liaoyi.space',
-      images: ogImage,
-      card: 'summary_large_image',
-      ...twitter,
+      title: override?.title ?? undefined,
+      description: override?.description ?? `Liaoyi's digital garden`,
+      images: '/og-image.svg',
+      ...override?.twitter,
     },
-    ...props,
   };
 }
 

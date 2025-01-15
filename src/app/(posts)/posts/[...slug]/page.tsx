@@ -1,5 +1,6 @@
 import type { ComponentProps, FC } from 'react';
 import { notFound } from 'next/navigation';
+import { format } from 'date-fns';
 import { Popup, PopupContent, PopupTrigger } from 'fumadocs-twoslash/ui';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 import { Callout } from 'fumadocs-ui/components/callout';
@@ -7,6 +8,8 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
+import { TagList } from '@/components/post/tags';
+import BackTo from '@/components/toggles/back-to';
 import { Wrapper } from '@/components/ui/wrapper';
 import { createMetadata } from '@/lib/seo/metadata';
 import { metadataImage } from '@/lib/seo/metadata-image';
@@ -29,8 +32,24 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
         single: false,
       }}
     >
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <BackTo href="/posts">返回文章</BackTo>
+
+      {/* <h1 className="text-3xl font-semibold">{page.data.title}</h1> */}
+      <div className="flex flex-col gap-2">
+        <DocsTitle>{page.data.title}</DocsTitle>
+        <DocsDescription className="mb-2 text-base">{page.data.description}</DocsDescription>
+        <div className="flex items-center gap-2 text-neutral-500">
+          <div className="flex items-center gap-2 text-sm">
+            <time dateTime={page.data.date?.toString()}>
+              {format(new Date(page.data.date!), 'yyyy-MM-dd')}
+            </time>
+            &bull;
+            {/* <span>阅读时间 {readingTime(JSON.stringify(data.post.body))} 分钟</span> */}
+          </div>
+          <TagList tags={page.data.tags} />
+        </div>
+      </div>
+
       <DocsBody>
         <Mdx
           components={{
@@ -62,15 +81,36 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const description = page.data.description ?? 'The library for building documentation sites';
+  const _metadataImage = metadataImage.withImage(page.slugs, {
+    title: page.data.title,
+    description: page.data.description ?? `Liaoyi's digital garden`,
+    openGraph: {
+      url: `/posts/${page.slugs.join('/')}`,
+    },
+  });
 
-  return createMetadata(
-    metadataImage.withImage(page.slugs, {
-      title: page.data.title,
-      description,
-      openGraph: {
-        url: `/docs/${page.slugs.join('/')}`,
+  /* const og_url = `/api/og/posts/${page.slugs.join('/')}`;
+  const _metadataImage = {
+    title: page.data.title,
+    description: page.data.description ?? `Liaoyi's digital garden`,
+    openGraph: {
+      images: {
+        alt: 'Banner',
+        url: og_url,
+        width: 1200,
+        height: 630,
       },
-    }) as any,
-  );
+      url: `/posts/${page.slugs.join('/')}`,
+    },
+    twitter: {
+      images: {
+        alt: 'Banner',
+        url: og_url,
+        width: 1200,
+        height: 630,
+      },
+    },
+  }; */
+
+  return createMetadata(_metadataImage);
 }

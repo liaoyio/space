@@ -9,7 +9,7 @@ import '@/styles/globals.css';
 
 export const metadata = createMetadata({
   icons: 'https://api.iconify.design/fluent-emoji:potted-plant.svg',
-  canonical: '/',
+  alternates: { canonical: '/' },
 });
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

@@ -1,7 +1,7 @@
 import { createMetadata } from '@/lib/seo/metadata';
 
 export const metadata = createMetadata({
-  canonical: '/about',
+  alternates: { canonical: '/about' },
 });
 
 export default function About() {
