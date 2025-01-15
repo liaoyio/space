@@ -1,15 +1,15 @@
-import type { NextConfig } from 'next';
+import { createMDX } from 'fumadocs-mdx/next';
+
+const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
-const nextConfig: NextConfig = {
-  output: 'standalone',
+const config = {
+  reactStrictMode: true,
+  // output: 'standalone',
   eslint: { ignoreDuringBuilds: true },
   async headers() {
     return [{ source: '/:path*{/}?', headers: [{ key: 'X-Accel-Buffering', value: 'no' }] }];
   },
-  async rewrites() {
-    return [{ source: '/admin', destination: '/admin/index.html' }];
-  },
 };
 
-export default nextConfig;
+export default withMDX(config);

@@ -3,7 +3,7 @@ import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import NextThemeProviders from '@/components/providers/next-theme';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { createMetadata } from '@/lib/metadata';
+import { createMetadata } from '@/lib/seo/metadata';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 
@@ -15,9 +15,7 @@ export const metadata = createMetadata({
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn('flex size-full h-screen flex-col', GeistSans.variable, GeistMono.variable)}
-      >
+      <body className={cn(GeistSans.variable, GeistMono.variable)}>
         <NextThemeProviders
           attribute="class"
           defaultTheme="system"

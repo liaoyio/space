@@ -1,38 +1,20 @@
-// @ts-ignore
-import client from '~/tina/__generated__/client';
-// @ts-ignore
-import type { PostConnectionQuery } from '~/tina/__generated__/types';
-import { PostItem } from '@/components/post/post-item';
-import { createMetadata } from '@/lib/metadata';
+import Link from 'next/link';
+import ArrowCard from '@/components/post/arrow-card';
+import { source } from '@/lib/source';
 
-export const revalidate = 3600; // invalidate every hour
-
-export const metadata = createMetadata({
-  canonical: '/about',
-  title: '文章',
-});
-
-export default async function Posts() {
-  const { data } = await client.queries.postConnection({
-    last: -1,
-    sort: 'date',
-    filter: { draft: { eq: false } },
-  });
-
-  const posts = data.postConnection.edges?.reduce(
+export default function Page(): React.ReactElement {
+  // 根据年份分组
+  const posts = [...source.getPages()].reduce(
     (acc, post) => {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-      const year = new Date(post?.node?.date!).getFullYear().toString();
-
+      const year = new Date(post.data.date!).getFullYear().toString();
       acc[year] ??= [];
       acc[year]?.push(post);
-
       return acc;
     },
-    {} as Record<string, PostConnectionQuery['postConnection']['edges']>,
+    {} as Record<string, any[]>,
   );
 
-  const years = Object.keys(posts ?? {}).sort((a, b) => parseInt(b) - parseInt(a));
+  const years = Object.keys(posts ?? {}).sort((a, b) => Number.parseInt(b) - Number.parseInt(a));
 
   if (!years.length || posts?.length) {
     return (
@@ -45,27 +27,18 @@ export default async function Posts() {
   return (
     <div className="mx-auto max-w-screen-md px-5">
       <div className="space-y-10">
-        <div className="font-semibold">文章列表</div>
+        <div className="font-semibold">文章</div>
 
         <div className="space-y-4">
           {years.map((year) => (
             <section className="space-y-4" key={year}>
               <div className="font-semibold">{year}</div>
-              <ul className="flex flex-col gap-6">
-                {posts?.[year]?.map((post, idx) => (
-                  <li
-                    key={post?.node?.id}
-                    className="animate-fade-up animate-ease-in-out"
-                    style={{ animationDelay: `${(idx + 1) * 200}ms` }}
-                  >
-                    <PostItem
-                      href={`/posts/${post?.node?._sys.breadcrumbs.join('/')}`}
-                      title={post?.node?.title ?? ''}
-                      // @ts-ignore
-                      description={post?.node?.description}
-                      tags={post?.node?.tags}
-                      date={post?.node?.date}
-                    />
+              <ul className="flex flex-col gap-4">
+                {posts?.[year]?.map((post) => (
+                  <li key={post.url}>
+                    <Link href={post.url}>
+                      <ArrowCard title={post.data.title} />
+                    </Link>
                   </li>
                 ))}
               </ul>

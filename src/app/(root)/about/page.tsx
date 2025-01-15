@@ -1,4 +1,4 @@
-import { createMetadata } from '@/lib/metadata';
+import { createMetadata } from '@/lib/seo/metadata';
 
 export const metadata = createMetadata({
   canonical: '/about',

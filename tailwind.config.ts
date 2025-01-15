@@ -1,14 +1,17 @@
-import typography from '@tailwindcss/typography';
+import { createPreset } from 'fumadocs-ui/tailwind-plugin';
 import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 import animated from 'tailwindcss-animated';
 
+/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ['class'],
+  presets: [createPreset()],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.{md,mdx}',
+    './node_modules/fumadocs-ui/dist/**/*.js',
   ],
   theme: {
     screens: {
@@ -140,12 +143,5 @@ export default {
       }),
     },
   },
-  plugins: [
-    animate,
-    typography,
-    animated,
-    // 开发模式下加载显示屏幕大小的插件
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    process.env.NODE_ENV === 'development' && require('tailwindcss-debug-screens'),
-  ],
+  plugins: [animate, animated],
 } satisfies Config;
